@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shaik Saniya — Python &amp; AI/ML Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #F1F4F2;
+    --bg-raise:  #FFFFFF;
+    --ink:       #12181B;
+    --ink-soft:  #4C5A5C;
+    --ink-faint: #8A9A9A;
+    --line:      #D7DED9;
+    --amber:     #DE9C36;
+    --amber-ink: #7A5316;
+    --teal:      #3C6858;
+    --teal-bg:   #E4EDE6;
+    --amber-bg:  #FBEDD4;
+    --radius:    3px;
+    --serif:     'IBM Plex Serif', Georgia, serif;
+    --sans:      'IBM Plex Sans', -apple-system, sans-serif;
+    --mono:      'IBM Plex Mono', 'Courier New', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--amber); color:var(--ink); }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  :focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(241,244,242,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    max-width:920px;
+    margin:0 auto;
+    padding:16px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .nav-mark{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:0.04em;
+  }
+  .nav-mark span{ color:var(--amber-ink); }
+  .nav-links{
+    display:flex;
+    gap:26px;
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .nav-links a{ transition:color .15s ease; border-bottom:1px solid transparent; }
+  .nav-links a:hover{ color:var(--ink); border-bottom-color:var(--amber); }
+  .nav-links .nav-cta{
+    color:var(--ink);
+    border:1px solid var(--ink);
+    padding:5px 12px;
+    border-radius:var(--radius);
+  }
+  .nav-links .nav-cta:hover{ background:var(--ink); color:var(--bg); border-bottom-color:transparent; }
+  @media (max-width:640px){
+    .nav-links a:not(.nav-cta){ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:76px 0 64px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-kicker{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .hero-kicker .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--teal);
+    box-shadow:0 0 0 3px var(--teal-bg);
+  }
+  h1.hero-title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(34px, 5.6vw, 54px);
+    line-height:1.12;
+    letter-spacing:-0.01em;
+    max-width:15ch;
+  }
+  h1.hero-title em{
+    font-style:normal;
+    color:var(--amber-ink);
+    background:linear-gradient(to top, var(--amber-bg) 34%, transparent 34%);
+    padding:0 2px;
+  }
+  .hero-sub{
+    margin-top:20px;
+    max-width:52ch;
+    font-size:17px;
+    color:var(--ink-soft);
+  }
+  .hero-actions{
+    margin-top:30px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .btn{
+    font-family:var(--mono);
+    font-size:13px;
+    padding:11px 20px;
+    border-radius:var(--radius);
+    border:1px solid var(--ink);
+    transition:transform .12s ease, background .15s ease, color .15s ease;
+    display:inline-block;
+  }
+  .btn-primary{ background:var(--ink); color:var(--bg); }
+  .btn-primary:hover{ transform:translateY(-1px); background:var(--amber-ink); border-color:var(--amber-ink); }
+  .btn-ghost{ color:var(--ink); }
+  .btn-ghost:hover{ transform:translateY(-1px); background:var(--bg-raise); }
+
+  /* ---------- CONSOLE (signature) ---------- */
+  .console{
+    margin-top:52px;
+    background:var(--ink);
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 18px 40px -18px rgba(18,24,27,0.45);
+  }
+  .console-bar{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:11px 16px;
+    background:#1B2327;
+    border-bottom:1px solid #2A3438;
+  }
+  .console-bar .chip{ width:9px; height:9px; border-radius:50%; background:#3A4448; }
+  .console-bar .label{
+    margin-left:8px;
+    font-family:var(--mono);
+    font-size:12px;
+    color:#7C8B8E;
+  }
+  .console-body{
+    padding:26px 22px 28px;
+    font-family:var(--mono);
+    font-size:14px;
+    min-height:132px;
+  }
+  .console-line{ display:flex; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .console-line .prompt{ color:var(--amber); flex-shrink:0; }
+  .console-line .q{ color:#E7ECEA; }
+  .console-out{
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px dashed #2C363A;
+    color:#8FE0BE;
+    opacity:0;
+    transition:opacity .5s ease;
+  }
+  .console-out.show{ opacity:1; }
+  .console-out .tag{
+    display:inline-block;
+    font-size:11px;
+    color:#7C8B8E;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .cursor{
+    display:inline-block;
+    width:7px; height:15px;
+    background:var(--amber);
+    margin-left:2px;
+    vertical-align:-2px;
+    animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  /* ---------- STAT STRIP ---------- */
+  .stats{
+    border-bottom:1px solid var(--line);
+  }
+  .stats-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    padding:30px 0;
+  }
+  .stat{
+    padding:0 18px;
+    border-left:1px solid var(--line);
+  }
+  .stat:first-child{ border-left:none; padding-left:0; }
+  .stat-num{
+    font-family:var(--serif);
+    font-size:26px;
+    font-weight:600;
+  }
+  .stat-label{
+    margin-top:4px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--ink-soft);
+    letter-spacing:.03em;
+  }
+  @media (max-width:640px){
+    .stats-row{ grid-template-columns:repeat(2,1fr); row-gap:24px; }
+    .stat:nth-child(3){ border-left:none; padding-left:0; }
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section.block{ padding:66px 0; border-bottom:1px solid var(--line); }
+  .block-head{ margin-bottom:36px; }
+  .block-head h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:28px;
+    margin-top:8px;
+  }
+  .block-head p{
+    margin-top:10px;
+    color:var(--ink-soft);
+    max-width:56ch;
+  }
+
+  /* ---------- WORK CARDS ---------- */
+  .work-card{
+    background:var(--bg-raise);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:26px 26px 24px;
+    margin-bottom:20px;
+  }
+  .work-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .work-title{ font-family:var(--serif); font-size:21px; font-weight:600; }
+  .work-meta{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-top:4px;
+  }
+  .work-links{ display:flex; gap:14px; font-family:var(--mono); font-size:12.5px; flex-shrink:0; }
+  .work-links a{ color:var(--teal); border-bottom:1px solid transparent; }
+  .work-links a:hover{ border-bottom-color:var(--teal); }
+
+  .io-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:18px;
+  }
+  .io-box{
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:14px 16px;
+  }
+  .io-box .io-tag{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .io-box.input .io-tag{ color:var(--amber-ink); }
+  .io-box.output .io-tag{ color:var(--teal); }
+  .io-box p{ margin-top:6px; font-size:14.5px; color:var(--ink); }
+  @media (max-width:640px){ .io-grid{ grid-template-columns:1fr; } }
+
+  .work-desc{ margin-top:16px; color:var(--ink-soft); font-size:15px; }
+
+  .tags{ margin-top:16px; display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    font-family:var(--mono);
+    font-size:11.5px;
+    padding:4px 9px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    color:var(--ink-soft);
+  }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{ position:relative; padding-left:26px; }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:5px; top:6px; bottom:6px;
+    width:1px;
+    background:var(--line);
+  }
+  .tl-item{ position:relative; padding-bottom:30px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:-26px; top:5px;
+    width:11px; height:11px;
+    border-radius:50%;
+    background:var(--bg-raise);
+    border:2px solid var(--teal);
+  }
+  .tl-year{ font-family:var(--mono); font-size:12px; color:var(--ink-faint); }
+  .tl-role{ font-family:var(--serif); font-weight:600; font-size:18px; margin-top:3px; }
+  .tl-org{ font-size:14px; color:var(--ink-soft); margin-top:1px; }
+  .tl-desc{ margin-top:8px; font-size:14.5px; color:var(--ink-soft); max-width:60ch; }
+
+  /* ---------- RESEARCH ---------- */
+  .paper{
+    background:var(--bg-raise);
+    border:1px solid var(--line);
+    border-left:3px solid var(--amber);
+    border-radius:6px;
+    padding:24px 26px;
+  }
+  .paper-title{ font-family:var(--serif); font-size:19px; font-weight:600; }
+  .paper-venue{ font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); margin-top:6px; }
+  .paper-desc{ margin-top:12px; font-size:14.5px; color:var(--ink-soft); }
+  .status-pill{
+    display:inline-block;
+    margin-top:14px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    padding:4px 10px;
+    background:var(--amber-bg);
+    color:var(--amber-ink);
+    border-radius:20px;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:26px 40px;
+  }
+  .skill-group-name{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin-bottom:10px;
+  }
+  .skill-list{ display:flex; flex-wrap:wrap; gap:8px; }
+  @media (max-width:640px){ .skills-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  footer{ padding:64px 0 56px; }
+  .contact-head{
+    font-family:var(--serif);
+    font-size:clamp(28px,4.4vw,40px);
+    font-weight:600;
+    max-width:16ch;
+  }
+  .contact-sub{ margin-top:14px; color:var(--ink-soft); max-width:52ch; }
+  .contact-rows{
+    margin-top:32px;
+    border-top:1px solid var(--line);
+  }
+  .contact-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    font-family:var(--mono);
+    font-size:14px;
+  }
+  .contact-row .k{ color:var(--ink-faint); }
+  .contact-row a:hover{ color:var(--amber-ink); }
+  .foot-note{
+    margin-top:36px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--ink-faint);
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .cursor{ animation:none; }
+    .console-out{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-row">
+    <div class="nav-mark">SAN<span>IYA</span></div>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#research">Research</a>
+      <a href="mailto:saniyashaik.in@gmail.com" class="nav-cta">Say hi</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="hero-kicker">
+      <span class="dot"></span>
+      <span class="eyebrow">Chittoor, Andhra Pradesh — open to Python / AI-ML roles</span>
+    </div>
+    <h1 class="hero-title">Shaik Saniya turns raw data and language into <em>structured insight.</em></h1>
+    <p class="hero-sub">Final-year B.Tech CSE (Data Science &amp; AI) student who builds full-stack Python applications — conversational analytics, agentic meeting intelligence, and NL-to-SQL pipelines — and ships them, not just prototypes them.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-primary">View the work</a>
+      <a href="mailto:saniyashaik.in@gmail.com" class="btn btn-ghost">saniyashaik.in@gmail.com</a>
+    </div>
+
+    <div class="console" id="console">
+      <div class="console-bar">
+        <span class="chip"></span><span class="chip"></span><span class="chip"></span>
+        <span class="label">datamind_ai — natural language query</span>
+      </div>
+      <div class="console-body">
+        <div class="console-line">
+          <span class="prompt">&gt;</span>
+          <span class="q" id="typed"></span><span class="cursor" id="cur"></span>
+        </div>
+        <div class="console-out" id="out">
+          <span class="tag">Compiled to SQL · session-aware · 10,024-row retail dataset</span><br>
+          SELECT region, SUM(revenue) FROM sales WHERE quarter = 'Q3' GROUP BY region ORDER BY 2 DESC;
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats wrap">
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">8.54<span style="font-size:15px;color:var(--ink-faint);">/10</span></div>
+        <div class="stat-label">CGPA · CSE (DS &amp; AI)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Internships completed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Hackathon-built products shipped</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Paper submitted · Springer / Scopus</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="work">
+    <div class="block-head">
+      <span class="eyebrow">Selected work</span>
+      <h2>Two problems, one habit: unstructured in, structured out.</h2>
+      <p>Each project takes something messy — a question, a transcript — and gives back something a person or a system can act on.</p>
+    </div>
+
+    <article class="work-card">
+      <div class="work-head">
+        <div>
+          <div class="work-title">DataMind AI</div>
+          <div class="work-meta">Conversational analytics platform · FlowZint AI Hackathon 2026</div>
+        </div>
+        <div class="work-links">
+          <a href="https://datamind-ai-insights.streamlit.app" target="_blank" rel="noopener">Live app ↗</a>
+          <a href="https://github.com/Shaik-Saniya67/Datamind-ai" target="_blank" rel="noopener">Source ↗</a>
+        </div>
+      </div>
+      <div class="io-grid">
+        <div class="io-box input">
+          <div class="io-tag">Input</div>
+          <p>A plain-language question about a CSV or Excel file.</p>
+        </div>
+        <div class="io-box output">
+          <div class="io-tag">Output</div>
+          <p>An SQL query, a live chart, and a running multi-turn chat over the data.</p>
+        </div>
+      </div>
+      <p class="work-desc">A full-stack, 9-module Python application — NL-to-SQL, querying, auto-charting, and data cleaning — built with an object-oriented, modular architecture and deployed on Streamlit Cloud. Underpins <em style="font-style:normal;color:var(--ink);">NL2Insight</em>, a research paper benchmarked on a 10,024-record retail dataset.</p>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">OOP</span><span class="tag">Pandas</span>
+        <span class="tag">Streamlit</span><span class="tag">SQLite</span><span class="tag">Plotly</span>
+        <span class="tag">Groq API · LLaMA-3.3-70B</span>
+      </div>
+    </article>
+
+    <article class="work-card">
+      <div class="work-head">
+        <div>
+          <div class="work-title">Minutes to Action</div>
+          <div class="work-meta">Agentic meeting-intelligence platform · AI Builders Challenge with IBM Bob, 2026</div>
+        </div>
+        <div class="work-links">
+          <a href="https://meeting-to-action-agent.streamlit.app/" target="_blank" rel="noopener">Live app ↗</a>
+        </div>
+      </div>
+      <div class="io-grid">
+        <div class="io-box input">
+          <div class="io-tag">Input</div>
+          <p>A raw meeting transcript or audio recording.</p>
+        </div>
+        <div class="io-box output">
+          <div class="io-tag">Output</div>
+          <p>Structured minutes, prioritized action items, flagged conflicts, and calendar-dated exports.</p>
+        </div>
+      </div>
+      <p class="work-desc">An AI agent that reasons past summarization: it asks clarifying questions, proposes grounded conflict resolutions, and drives an end-to-end export pipeline — PDF, DOCX, CSV, ICS — using Google Gemini's native multimodal transcription.</p>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">Google Gemini API</span>
+        <span class="tag">SQLite</span><span class="tag">fpdf2</span><span class="tag">python-docx</span>
+      </div>
+    </article>
+  </section>
+
+  <section class="block wrap" id="experience">
+    <div class="block-head">
+      <span class="eyebrow">Experience</span>
+      <h2>Four internships, in order.</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">2026</div>
+        <div class="tl-role">Data Science &amp; ML Intern</div>
+        <div class="tl-org">Strydo Technologies</div>
+        <div class="tl-desc">Implemented supervised ML models in Python (Scikit-learn) — preprocessing, feature engineering, model training, and evaluation on real-world datasets.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2025</div>
+        <div class="tl-role">GenAI-Powered Data Analytics Intern</div>
+        <div class="tl-org">Forge (Virtual)</div>
+        <div class="tl-desc">Practical work in exploratory data analysis, predictive AI modeling, and business reporting using Python.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2025</div>
+        <div class="tl-role">Python Stack Development Intern</div>
+        <div class="tl-org">Infosys Springboard (Virtual)</div>
+        <div class="tl-desc">Applied Python OOP, backend concepts, and debugging within a structured software development programme.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2024</div>
+        <div class="tl-role">Python Development Intern</div>
+        <div class="tl-org">CodSoft (Virtual)</div>
+        <div class="tl-desc">Developed modular Python applications using clean-code principles, strengthening core programming logic.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="research">
+    <div class="block-head">
+      <span class="eyebrow">Research</span>
+      <h2>Explainable analytics, written up.</h2>
+    </div>
+    <div class="paper">
+      <div class="paper-title">NL2Insight: Explainable Conversational Analytics with LLMs</div>
+      <div class="paper-venue">IDEA 2026, Jio Institute · Springer LNNS / Scopus</div>
+      <p class="paper-desc">An explainable NL-to-SQL and automated data-cleaning pipeline in Python, benchmarked on a 10,024-record retail dataset.</p>
+      <span class="status-pill">Submitted · June 2026</span>
+    </div>
+  </section>
+
+  <section class="block wrap" id="skills" style="border-bottom:none;">
+    <div class="block-head">
+      <span class="eyebrow">Toolkit</span>
+      <h2>What it's built with.</h2>
+    </div>
+    <div class="skills-grid">
+      <div>
+        <div class="skill-group-name">Languages</div>
+        <div class="skill-list">
+          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Java</span>
+          <span class="tag">HTML</span><span class="tag">CSS</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-name">AI / Machine Learning</div>
+        <div class="skill-list">
+          <span class="tag">Scikit-learn</span><span class="tag">Groq API</span><span class="tag">Google Gemini API</span>
+          <span class="tag">Model Training &amp; Eval</span><span class="tag">Feature Engineering</span><span class="tag">NL-to-SQL</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-name">Data &amp; Analytics</div>
+        <div class="skill-list">
+          <span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Plotly</span>
+          <span class="tag">MySQL</span><span class="tag">SQLite</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-name">Tools</div>
+        <div class="skill-list">
+          <span class="tag">Streamlit</span><span class="tag">Git</span><span class="tag">GitHub</span>
+          <span class="tag">VS Code</span><span class="tag">Jupyter</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="eyebrow">Get in touch</div>
+  <div class="contact-head">Looking for a Python / AI-ML developer who ships.</div>
+  <p class="contact-sub">Currently completing my final year at SITAMS, Chittoor — open to internship and full-time roles in Python development, applied AI/ML, and data engineering.</p>
+  <div class="contact-rows">
+    <div class="contact-row"><span class="k">Email</span><a href="mailto:saniyashaik.in@gmail.com">saniyashaik.in@gmail.com</a></div>
+    <div class="contact-row"><span class="k">Phone</span><a href="tel:+917981882071">+91 79818 82071</a></div>
+    <div class="contact-row"><span class="k">LinkedIn</span><a href="https://linkedin.com/in/shaiksaniya67" target="_blank" rel="noopener">linkedin.com/in/shaiksaniya67</a></div>
+    <div class="contact-row"><span class="k">GitHub</span><a href="https://github.com/ShaikSaniya67" target="_blank" rel="noopener">github.com/ShaikSaniya67</a></div>
+  </div>
+  <div class="foot-note">Shaik Saniya · B.Tech CSE, Data Science &amp; AI · SITAMS, Chittoor · 2023–2027</div>
+</footer>
+
+<script>
+  (function(){
+    var text = "Which region had the highest Q3 revenue?";
+    var typedEl = document.getElementById('typed');
+    var curEl = document.getElementById('cur');
+    var outEl = document.getElementById('out');
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if(reduced){
+      typedEl.textContent = text;
+      outEl.classList.add('show');
+      return;
+    }
+
+    var i = 0;
+    function type(){
+      if(i <= text.length){
+        typedEl.textContent = text.slice(0, i);
+        i++;
+        setTimeout(type, 38);
+      } else {
+        curEl.style.display = 'none';
+        setTimeout(function(){ outEl.classList.add('show'); }, 280);
+      }
+    }
+
+    var started = false;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting && !started){
+          started = true;
+          setTimeout(type, 500);
+        }
+      });
+    }, { threshold: 0.4 });
+    obs.observe(document.getElementById('console'));
+  })();
+</script>
+
+</body>
+</html>
